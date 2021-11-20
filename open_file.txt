@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<omx xmlns="system" migration="21" xmlns:dp="automation.deployment" xmlns:srv="server" xmlns:ct="automation.control" xmlns:eth="automation.ethernet">
+  <dp:domain name="Domain" uuid="4873318b-36c8-4100-9ec4-03113a665514">
+    <dp:domain-node name="ARM" uuid="a446d948-65dd-4c0e-a417-d49b8152e06b" address="ARM_main">
+      <eth:ethernet-adapter name="EthernetAdapter" uuid="c4865db0-10cf-4f76-96ed-5ecca5af747e" address="192.168.1.1" />
+      <srv:io-server name="Server" uuid="804ba39a-ee69-451c-8c1d-8332c438ff7a">
+        <srv:opcda-server name="DaServer" uuid="bb4576c4-af0b-4d3b-a4bf-4ed4b3cee85d" />
+        <srv:opcaeserver-module name="AeServer" uuid="633538a0-8381-43e0-809d-ff3428769b84" />
+        <srv:hda-server name="HdaServer" uuid="c867a5b2-538d-45d9-bb06-4f8f422a686e" />
+        <srv:history-module name="HistoryModule" uuid="f7a6c753-4fdc-4b0c-b62f-f7612945105b" />
+        <dp:application-object name="Application" uuid="5998151a-3598-45b6-a14d-bba704f80a33" access-level="public">
+          <ct:object name="root" uuid="203193e5-918d-4880-b529-cf9fa9734714" access-level="public">
+            <ct:parameter name="Parameter" uuid="1aee8e4c-117e-4370-870e-27b92c070186" type="bool" direction="out" access-level="public" />
+          </ct:object>
+        </dp:application-object>
+      </srv:io-server>
+      <eth:ethernet-adapter name="EthernetAdapter1" uuid="fc9d96ae-90fc-4d0e-bc92-0bd66344f7af" address="192.168.1.1" />
+    </dp:domain-node>
+  </dp:domain>
+  <link-unit name="System" uuid="fe67d423-e31e-4881-8d68-ee9ce1498d69" target="Om.System" />
+  <link-unit name="Server" uuid="7ab10ee0-a82b-4a5c-b53f-a853e6e51905" target="Om.Server" />
+</omx>
