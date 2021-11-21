@@ -65,6 +65,7 @@
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="line" language="Python" />
+        <watch expression="temp" language="Python" />
       </configuration>
     </watches-manager>
   </component>

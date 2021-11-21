@@ -1,15 +1,18 @@
-""""
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-"""
 # словарь
-elements = {"armName": "", "ethernet_adapter_1": ""}
+elements = {"armName": "", "ethernet-adapter": "", "ethernet-adapter_1": ""}
+domainElements = ("eth:ethernet-adapter", "srv:io-server")
+
+def GetParametr (strIn):
+    temp = strIn[line.find("address="): len(strIn)]
+    temp = temp[temp.find("\"")+1: temp.rfind("\"")]
+    print (temp)
+
+def find_element(linefromfile):
+    for i in domainElements:
+        if i in linefromfile:
+           if line.find("address=") != -1:
+               GetParametr(line)
+
 
 # чтение файла open_file.txt
 with open("open_file.txt", 'r', encoding="UTF-8") as f:
@@ -19,6 +22,6 @@ with open("open_file.txt", 'r', encoding="UTF-8") as f:
             break
         if "<dp:domain-node" in line:
             while "</dp:domain-node" not in line:
-                print(line)
+                find_element(line)
                 line = f.readline()
-            print(line)
+            print("all_done")
