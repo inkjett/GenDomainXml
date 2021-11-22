@@ -1,17 +1,19 @@
 # словарь
 elements = {"armName": "", "ethernet-adapter": "", "ethernet-adapter_1": ""}
-domainElements = ("eth:ethernet-adapter", "srv:io-server")
+domainElements = ("eth:ethernet-adapter", "srv:io-server", "dp:domain-node name=")
 
-def GetParametr (strIn):
-    temp = strIn[line.find("address="): len(strIn)]
-    temp = temp[temp.find("\"")+1: temp.rfind("\"")]
-    print (temp)
 
-def find_element(linefromfile):
-    for i in domainElements:
-        if i in linefromfile:
-           if line.find("address=") != -1:
-               GetParametr(line)
+def find_element(line):
+    if line.find("ethernet-adapter") != -1:
+        temp = line[line.find("address="): len(line)]
+        temp = temp[temp.find("\"") + 1: temp.rfind("\"")]
+        elements["ethernet-adapter"] = temp
+        print(elements["ethernet-adapter"])
+    elif line.find("domain-node name=") != -1:
+        temp = line[line.find("address="): len(line)]
+        temp = temp[temp.find("\"") + 1: temp.rfind("\"")]
+        elements["armName"] = temp
+        print(elements["armName"])
 
 
 # чтение файла open_file.txt
