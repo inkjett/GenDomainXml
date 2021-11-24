@@ -1,3 +1,5 @@
+
+import xml.d
 # словарь
 elements = {"armName": "", "ethernet-adapter": "", "ethernet-adapter_1": ""}
 domainElements = ("eth:ethernet-adapter", "srv:io-server", "dp:domain-node name=")
@@ -5,9 +7,14 @@ domainElements = ("eth:ethernet-adapter", "srv:io-server", "dp:domain-node name=
 
 def find_element(line):
     if line.find("ethernet-adapter") != -1:
-        temp = line[line.find("address="): len(line)]
-        temp = temp[temp.find("\"") + 1: temp.rfind("\"")]
-        elements["ethernet-adapter"] = temp
+        #temp = line[line.find("address="): len(line)]
+        #temp = temp[temp.find("\"") + 1: temp.rfind("\"")]
+        print(line)
+        temp = x
+        #dom.normalize()
+        #node1 = dom.getElementsByTagName("node1")[0]
+        #print(node1)
+        #elements["ethernet-adapter"] = temp
         print(elements["ethernet-adapter"])
     elif line.find("domain-node name=") != -1:
         temp = line[line.find("address="): len(line)]

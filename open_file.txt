@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<omx xmlns="system" migration="21" xmlns:dp="automation.deployment" xmlns:srv="server" xmlns:ct="automation.control" xmlns:eth="automation.ethernet">
-  <dp:domain name="Domain" uuid="4873318b-36c8-4100-9ec4-03113a665514">
-    <dp:domain-node name="ARM" uuid="a446d948-65dd-4c0e-a417-d49b8152e06b" address="ARM_main">
-      <eth:ethernet-adapter name="EthernetAdapter" uuid="c4865db0-10cf-4f76-96ed-5ecca5af747e" address="192.168.1.1" />
-      <srv:io-server name="Server" uuid="804ba39a-ee69-451c-8c1d-8332c438ff7a">
-        <srv:opcda-server name="DaServer" uuid="bb4576c4-af0b-4d3b-a4bf-4ed4b3cee85d" />
-        <srv:opcaeserver-module name="AeServer" uuid="633538a0-8381-43e0-809d-ff3428769b84" />
-        <srv:hda-server name="HdaServer" uuid="c867a5b2-538d-45d9-bb06-4f8f422a686e" />
-        <srv:history-module name="HistoryModule" uuid="f7a6c753-4fdc-4b0c-b62f-f7612945105b" />
-        <dp:application-object name="Application" uuid="5998151a-3598-45b6-a14d-bba704f80a33" access-level="public">
-          <ct:object name="root" uuid="203193e5-918d-4880-b529-cf9fa9734714" access-level="public">
-            <ct:parameter name="Parameter" uuid="1aee8e4c-117e-4370-870e-27b92c070186" type="bool" direction="out" access-level="public" />
-          </ct:object>
-        </dp:application-object>
+<omx xmlns="system" migration="21" xmlns:a="automation" xmlns:dp="automation.deployment" xmlns:eth="automation.ethernet" xmlns:srv="server">
+  <a:application-type name="App" uuid="297a025d-ed73-4586-b432-a0d61d5c1572" />
+  <link-unit name="System" uuid="afe10e6d-86cf-485f-bdff-791d9ecd39e5" target="Om.System" />
+  <link-unit name="Server" uuid="a2a70fb3-7b46-4973-a503-0ff2aafb6f7c" target="Om.Server" />
+  <dp:domain name="Domain" uuid="7e8b9bb8-3983-4f25-8eb3-af3c96602f6a">
+    <dp:domain-node name="ARM" uuid="70dd1079-63ce-417a-aeee-5c371a680170">
+      <eth:ethernet-adapter name="EthernetAdapter" uuid="eb1708da-2b54-4952-81f6-cc961fb14638" address="192.168.10.11" network="Ethernet" />
+      <eth:ethernet-adapter name="EthernetAdapter1" uuid="9cf797d3-787c-4c02-b5b5-30b940bc8587" address="192.168.10.12" network="Ethernet" />
+      <srv:io-server name="AlphaServer" uuid="a83d256b-2bcd-4a36-9591-8cdd1affc8b4">
+        <srv:opcda-server name="DaServer" uuid="29b8dba3-2937-44ff-a7b2-10e5f05b3e37">
+          <eth:ethernet-adapter-binding adapter="EthernetAdapter" />
+          <eth:ethernet-adapter-binding adapter="EthernetAdapter1" />
+        </srv:opcda-server>
+        <srv:opcaeserver-module name="AeServer" uuid="e952996b-b5e8-4ed7-8a6e-503348700188" />
+        <srv:hda-server name="HdaServer" uuid="81aebd14-9018-42d5-8d06-fe0ccc624887" />
+        <srv:history-module name="HistoryModule" uuid="eaa44acc-290a-41eb-a1c2-b06df5350b86" />
       </srv:io-server>
-      <eth:ethernet-adapter name="EthernetAdapter1" uuid="fc9d96ae-90fc-4d0e-bc92-0bd66344f7af" address="192.168.1.1" />
     </dp:domain-node>
+    <eth:ethernet-net name="Ethernet" uuid="9b46d93e-1d08-4278-a4c6-40cc722934a4" />
   </dp:domain>
-  <link-unit name="System" uuid="fe67d423-e31e-4881-8d68-ee9ce1498d69" target="Om.System" />
-  <link-unit name="Server" uuid="7ab10ee0-a82b-4a5c-b53f-a853e6e51905" target="Om.Server" />
 </omx>
