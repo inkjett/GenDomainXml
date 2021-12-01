@@ -1,4 +1,6 @@
 import xml.etree.ElementTree as ET  # подключаем  The ElementTree XML
+#from xml.etree.ElementTree import Comment
+import CommentForXml as Comment
 
 # словарь
 elements = {"element1": {"armName": "", "ethernet-adapter": "", "ethernet-adapter_1": "", "io-server": ""},
@@ -28,7 +30,11 @@ def GenNetXMLStr():
     data.set("Name", elements["element1"]['armName'])
     data.set("NetEnterPort", "1010")
     data.set("ParentAgentPort", "1020")
-    data.
-    item1 = ET.Elemnt(data, '<Options LoggerLevel="2"/>')
-    mydata = ET.tostring(data)
-    print(mydata)
+    ET.SubElement(data, 'Options LoggerLevel="2"')
+    ET.Comment(Comment)
+    data.insert(0, ET.Comment(Comment.netComment1))
+    data.insert(1, ET.Comment(Comment.netComment2))
+    ET.ElementTree(data).write("test.xml", 'utf-8')
+    #ET.dump(data)
+    #mydata = ET.tostring(data, 'utf-8')
+    #print(mydata)

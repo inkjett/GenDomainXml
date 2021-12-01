@@ -1,0 +1,13 @@
+<Alpha.Net.Agent Name="ARM" NetEnterPort="1010" ParentAgentPort="1020"><!--
+
+	<ChildAgents>
+		Может содержать несколько дочерних узлов <ChildAgent>
+		<ChildAgent>
+			Обязательные атрибуты:
+			Name - имя дочернего агента (уникальное среди всех ChildAgent 'ов; не должно содержать символы: '.' и '')
+				Address - адрес дочернего агента 
+				Port - номер порта дочернего агента--><!--
+
+	<ChildAgents>
+				<ChildAgent Name="ChildA_1" Address="199.9.9.9" Port="1099"/>
+	</ChildAgents>--><Options LoggerLevel="2" /></Alpha.Net.Agent>
