@@ -1,8 +1,9 @@
 import Data_processing_functions as DP_funk
 
-def getDataFromFile(FileName):
+
+def get_data_from_file(file_name):
     # чтение файла open_file.txt
-    with open(FileName, 'r', encoding="UTF-8") as f:  # Проходим по всем строкам файла проекта
+    with open(file_name, 'r', encoding="UTF-8") as f:  # Проходим по всем строкам файла проекта
         while 8:  # бесконечный цикл
             line = f.readline()  # записываем в переменную line каждую строку из файла
             if not line:  # если стрки кончились выходим из цикла
@@ -12,5 +13,3 @@ def getDataFromFile(FileName):
                     DP_funk.find_element(line)  # функция поиск эелемнта
                     line = f.readline()  # с ледующая линия в рамках dp:domain-node
                 print("all_done")
-
-
