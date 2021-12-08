@@ -29,14 +29,22 @@ def gen_net_xml_str():
     data.set("NetEnterPort", "1010")
     data.set("ParentAgentPort", "1020")
     ET.SubElement(data, 'Options LoggerLevel="2"')
-    data.insert(0, ET.Comment(Comment.netComment1))
-    data.insert(1, ET.Comment(Comment.netComment2))
-    data.insert(2, ET.Comment(Comment.netComment3))
-    data.insert(3, ET.Comment(Comment.netComment4))
-    ET.ElementTree(data).write("test.xml", 'utf-8', xml_declaration=True)
+    data.insert(0, ET.Comment(Comment.netComment5))
+    data.insert(1, ET.Comment(Comment.netComment1))
+    data.insert(2, ET.Comment(Comment.netComment2))
+    data.insert(3, ET.Comment(Comment.netComment3))
+    data.insert(4, ET.Comment(Comment.netComment4))
+    #ET.ElementTree(data).write("test.xml", 'utf-8', xml_declaration=True)
+    pretty_xml_as_string = xml.dom.minidom.parseString(
+        ET.tostring(data, encoding='utf-8', method='xml',
+                    xml_declaration=True).decode('UTF-8')).toprettyxml()  # приводим xml к "нормальному" виду
+    print(pretty_xml_as_string)
+    with open("netxml.txt", "w") as filetowrite:
+        filetowrite.write(pretty_xml_as_string)
     # ET.dump(data)
     # mydata = ET.tostring(data, 'utf-8')
     # print(mydata)
+
 
 def gen_domain_xml_str():
     data = ET.Element("Alpha.Domain.Agent")
@@ -47,3 +55,5 @@ def gen_domain_xml_str():
         ET.tostring(data, encoding='utf-8', method='xml',
                     xml_declaration=True).decode('UTF-8')).toprettyxml()  # приводим xml к "нормальному" виду
     print(pretty_xml_as_string)
+    with open("domainxml.txt", "w") as filetowrite:
+        filetowrite.write(pretty_xml_as_string)
