@@ -34,6 +34,8 @@ def gen_net_xml_str():
     root.insert(2, ET.Comment(Comment.netComment2))
     root.insert(3, ET.Comment(Comment.netComment3))
     root.insert(4, ET.Comment(Comment.netComment4))
+    for value in Comment.listOfnetComments:
+        print(value.keys())
     # ET.ElementTree(data).write("test.xml", 'utf-8', xml_declaration=True) записывает в файл значения
     pretty_xml_as_string = xml.dom.minidom.parseString(
         ET.tostring(root, encoding='utf-8', method='xml',

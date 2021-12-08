@@ -33,3 +33,4 @@ netComment5 = 'Конфигурирование Net-агента' \
                 '\n\tМожет содержать один дочерний элемент <ChildAgents>\n\t'
 
 
+listOfnetComments = [netComment5, netComment2, netComment3, netComment4, netComment1]
