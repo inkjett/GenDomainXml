@@ -1,4 +1,13 @@
 <?xml version="1.0" ?>
 <Alpha.Domain.Agent Name="NDA">
-	<EntryPointNetAgent Name="local"/>
+	<EntryPointNetAgent Name="local" Address="127.0.0.1" Port="1010"/>
+	<InstalledComponents>
+		<Alpha.Server Name="Server_1" ServiceName="Alpha.Server" DefaultActivation="1"/>
+	</InstalledComponents>
+	<Server>
+		<Components StoragePath="c:\DomainStorage\cache\server">
+			<Component InstalledName="Server_1" Name="Server"/>
+		</Components>
+	</Server>
+	<Options LoggerLevel="2"/>
 </Alpha.Domain.Agent>

@@ -24,19 +24,19 @@ def find_element(linefunk):
 
 
 def gen_net_xml_str():
-    data = ET.Element("Alpha.Net.Agent")
-    data.set("Name", elements["element1"]['armName'])
-    data.set("NetEnterPort", "1010")
-    data.set("ParentAgentPort", "1020")
-    ET.SubElement(data, 'Options LoggerLevel="2"')
-    data.insert(0, ET.Comment(Comment.netComment5))
-    data.insert(1, ET.Comment(Comment.netComment1))
-    data.insert(2, ET.Comment(Comment.netComment2))
-    data.insert(3, ET.Comment(Comment.netComment3))
-    data.insert(4, ET.Comment(Comment.netComment4))
-    #ET.ElementTree(data).write("test.xml", 'utf-8', xml_declaration=True)
+    root = ET.Element("Alpha.Net.Agent")
+    root.set("Name", elements["element1"]['armName'])
+    root.set("NetEnterPort", "1010")
+    root.set("ParentAgentPort", "1020")
+    ET.SubElement(root, 'Options LoggerLevel="2"')
+    root.insert(0, ET.Comment(Comment.netComment5))
+    root.insert(1, ET.Comment(Comment.netComment1))
+    root.insert(2, ET.Comment(Comment.netComment2))
+    root.insert(3, ET.Comment(Comment.netComment3))
+    root.insert(4, ET.Comment(Comment.netComment4))
+    # ET.ElementTree(data).write("test.xml", 'utf-8', xml_declaration=True) записывает в файл значения
     pretty_xml_as_string = xml.dom.minidom.parseString(
-        ET.tostring(data, encoding='utf-8', method='xml',
+        ET.tostring(root, encoding='utf-8', method='xml',
                     xml_declaration=True).decode('UTF-8')).toprettyxml()  # приводим xml к "нормальному" виду
     print(pretty_xml_as_string)
     with open("netxml.txt", "w") as filetowrite:
@@ -47,12 +47,44 @@ def gen_net_xml_str():
 
 
 def gen_domain_xml_str():
-    data = ET.Element("Alpha.Domain.Agent")
-    data.set("Name", "NDA")
-    EntryPointNetAgent = ET.SubElement(data, 'EntryPointNetAgent')
-    EntryPointNetAgent.set("Name", "local")
+    # root
+    root = ET.Element("Alpha.Domain.Agent")
+    root.set("Name", "NDA")
+
+    #root-EntryPointNetAgent
+    root_entryPointNetAgent = ET.SubElement(root, 'EntryPointNetAgent')
+    root_entryPointNetAgent.set("Name", "local")
+    root_entryPointNetAgent.set("Address", "127.0.0.1")
+    root_entryPointNetAgent.set("Port", "1010")
+
+    # root-InstalledComponents
+    root_installedComponents = ET.SubElement(root, 'InstalledComponents')
+
+    # root-InstalledComponents-AlphaServer
+    root_installedComponents_alphaServer = ET.SubElement(root_installedComponents, 'Alpha.Server')  # пареметр Alpah.Server в EntryPointNetAgent
+    root_installedComponents_alphaServer.set("Name", "Server_1")
+    root_installedComponents_alphaServer.set("ServiceName", "Alpha.Server")
+    root_installedComponents_alphaServer.set("DefaultActivation", "1")
+
+    # root-Server
+    root_server = ET.SubElement(root, 'Server')
+
+    # root-Server-Components
+    root_server_components = ET.SubElement(root_server, 'Components')
+    root_server_components.set("StoragePath", "c:\DomainStorage\cache\server")
+
+    # root-Server-Components-Component
+    root_server_components_component = ET.SubElement(root_server_components, 'Component')
+    root_server_components_component.set("InstalledName", "Server_1")
+    root_server_components_component.set("Name", "Server")
+
+    # root-Options
+    root_options = ET.SubElement(root, 'Options')
+    root_options.set("LoggerLevel", "2")
+
+    # приведение к нормальному виду xml
     pretty_xml_as_string = xml.dom.minidom.parseString(
-        ET.tostring(data, encoding='utf-8', method='xml',
+        ET.tostring(root, encoding='utf-8', method='xml',
                     xml_declaration=True).decode('UTF-8')).toprettyxml()  # приводим xml к "нормальному" виду
     print(pretty_xml_as_string)
     with open("domainxml.txt", "w") as filetowrite:
