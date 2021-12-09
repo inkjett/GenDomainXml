@@ -1,6 +1,18 @@
 <?xml version="1.0" ?>
 <Alpha.Domain.Agent Name="NDA">
-	<EntryPointNetAgent Name="local" Address="127.0.0.1" Port="1010"/>
+	<!--
+		EntryPointNetAgent - точка доступа Net-јгента. 			        
+			Name - адрес (Name) Net-агента, предназначенного дл€ взаимодействи€ "внешнего" мира с данным 			        
+				доменным агентом (вход€щие запросы от клиентов, административного приложени€ в трее и т.д.) 			        
+			Address - IP-адрес или им€ хоста точки доступа (опционально, по-умолчанию подразумеваетс€ IP-адрес машины, где запущена рабоча€ станци€) 			        
+			Port    - номер порта точки доступа (значение NetEnterPort в конфигурации Net-јгента).
+	-->
+	<EntryPointNetAgent Name="local" Address="127.0.0.1" Port="1010">
+		<!--
+			“ег InstalledComponents описывает перечень установленых экземпл€ров компонентов на машине, где работает данный доменный агент. 		          
+			Ёлементы из этого перечн€ "мапп€тс€" на экземпл€ры компонентов в реальных рол€х доменного агента.
+		-->
+	</EntryPointNetAgent>
 	<InstalledComponents>
 		<Alpha.Server Name="Server_1" ServiceName="Alpha.Server" DefaultActivation="1"/>
 	</InstalledComponents>

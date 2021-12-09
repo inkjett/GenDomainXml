@@ -1,4 +1,4 @@
-import xml.etree.ElementTree as ET  # подключаем  The ElementTree XML
+import xml.etree.ElementTree as ET  # подключаем The ElementTree XML
 import CommentForXml as Comment
 import xml.dom.minidom
 
@@ -24,63 +24,60 @@ def find_element(linefunk):
 
 
 def gen_net_xml_str():
+    # root
     root = ET.Element("Alpha.Net.Agent")
     root.set("Name", elements["element1"]['armName'])
     root.set("NetEnterPort", "1010")
     root.set("ParentAgentPort", "1020")
+
+    # root.Options
     ET.SubElement(root, 'Options LoggerLevel="2"')
-    root.insert(0, ET.Comment(Comment.netComment5))
-    root.insert(1, ET.Comment(Comment.netComment1))
-    root.insert(2, ET.Comment(Comment.netComment2))
-    root.insert(3, ET.Comment(Comment.netComment3))
-    root.insert(4, ET.Comment(Comment.netComment4))
-    for value in Comment.listOfnetComments:
-        print(value.keys())
-    # ET.ElementTree(data).write("test.xml", 'utf-8', xml_declaration=True) записывает в файл значения
+
+    for index, value in enumerate(Comment.listOfnetComments):  # циклом проходим по списку комментариев и добавляем их в xml
+        root.insert(index, ET.Comment(value))
     pretty_xml_as_string = xml.dom.minidom.parseString(
         ET.tostring(root, encoding='utf-8', method='xml',
                     xml_declaration=True).decode('UTF-8')).toprettyxml()  # приводим xml к "нормальному" виду
-    print(pretty_xml_as_string)
+    # print(pretty_xml_as_string)
     with open("netxml.txt", "w") as filetowrite:
         filetowrite.write(pretty_xml_as_string)
-    # ET.dump(data)
-    # mydata = ET.tostring(data, 'utf-8')
-    # print(mydata)
 
 
 def gen_domain_xml_str():
     # root
     root = ET.Element("Alpha.Domain.Agent")
     root.set("Name", "NDA")
+    root.insert(0, ET.Comment(Comment.domaincomment1))
 
-    #root-EntryPointNetAgent
+    # root.EntryPointNetAgent
     root_entryPointNetAgent = ET.SubElement(root, 'EntryPointNetAgent')
     root_entryPointNetAgent.set("Name", "local")
     root_entryPointNetAgent.set("Address", "127.0.0.1")
     root_entryPointNetAgent.set("Port", "1010")
+    root_entryPointNetAgent.insert(0, ET.Comment(Comment.domaincomment2))
 
-    # root-InstalledComponents
+    # root.InstalledComponents
     root_installedComponents = ET.SubElement(root, 'InstalledComponents')
 
-    # root-InstalledComponents-AlphaServer
+    # root.InstalledComponents.AlphaServer
     root_installedComponents_alphaServer = ET.SubElement(root_installedComponents, 'Alpha.Server')  # пареметр Alpah.Server в EntryPointNetAgent
     root_installedComponents_alphaServer.set("Name", "Server_1")
     root_installedComponents_alphaServer.set("ServiceName", "Alpha.Server")
     root_installedComponents_alphaServer.set("DefaultActivation", "1")
 
-    # root-Server
+    # root.Server
     root_server = ET.SubElement(root, 'Server')
 
-    # root-Server-Components
+    # root.Server.Components
     root_server_components = ET.SubElement(root_server, 'Components')
     root_server_components.set("StoragePath", "c:\DomainStorage\cache\server")
 
-    # root-Server-Components-Component
+    # root.Server.Components.Component
     root_server_components_component = ET.SubElement(root_server_components, 'Component')
     root_server_components_component.set("InstalledName", "Server_1")
     root_server_components_component.set("Name", "Server")
 
-    # root-Options
+    # root.Options
     root_options = ET.SubElement(root, 'Options')
     root_options.set("LoggerLevel", "2")
 
