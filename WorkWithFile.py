@@ -1,4 +1,5 @@
 import Data_processing_functions as DP_funk
+import os as files
 
 
 def get_data_from_file(file_name):
@@ -13,3 +14,6 @@ def get_data_from_file(file_name):
                     DP_funk.find_element(line)  # функция поиск эелемнта
                     line = f.readline()  # с ледующая линия в рамках dp:domain-node
                 print("all_done")
+
+def get_list_of_files():
+    print(files.getcwd())

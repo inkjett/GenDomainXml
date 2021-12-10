@@ -79,7 +79,7 @@ def gen_domain_xml_str():
     # root.Server.Components.Component
     root_server_components_component = ET.SubElement(root_server_components, 'Component')
     root_server_components_component.set("InstalledName", "Server_1")
-    root_server_components_component.set("Name", "Server")
+    root_server_components_component.set("Name", elements["element1"]["io-server"])
     root_server_components_component.insert(0, ET.Comment(Comment.domaincomment6))
 
     # root.Options
