@@ -67,19 +67,26 @@ def gen_domain_xml_str():
 
     # root.Server
     root_server = ET.SubElement(root, 'Server')
+    root_server.insert(0, ET.Comment(Comment.domaincomment3))
+    root_server.insert(1, ET.Comment(Comment.domaincomment4))
 
     # root.Server.Components
     root_server_components = ET.SubElement(root_server, 'Components')
+
     root_server_components.set("StoragePath", "c:\DomainStorage\cache\server")
+    root_server_components.insert(0, ET.Comment(Comment.domaincomment5))
 
     # root.Server.Components.Component
     root_server_components_component = ET.SubElement(root_server_components, 'Component')
     root_server_components_component.set("InstalledName", "Server_1")
     root_server_components_component.set("Name", "Server")
+    root_server_components_component.insert(0, ET.Comment(Comment.domaincomment6))
 
     # root.Options
     root_options = ET.SubElement(root, 'Options')
     root_options.set("LoggerLevel", "2")
+    root_options.insert(0, ET.Comment(Comment.domaincomment7))
+    root_options.insert(1, ET.Comment(Comment.domaincomment8))
 
     # приведение к нормальному виду xml
     pretty_xml_as_string = xml.dom.minidom.parseString(
