@@ -25,7 +25,7 @@
 				построенные для локальных экземпляров Alpha.Server.                   
 				Указанная папка должна существовать в файловой системе.
 			-->
-			<Component InstalledName="Server_1" Name="Server1">
+			<Component InstalledName="Server_1" Name="Server">
 				<!--
 					InstalledName - имя установленного экземпляра компонента (из перечня установленных экземпляров компонентов InstalledComponents) 				
 					Name - имя данного компонента в проекте автоматизации
