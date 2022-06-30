@@ -8,3 +8,5 @@ domain_Name = ''
 ARM = ''
 ethernet_address = ''
 server_name = ''
+
+Selected_Domain = ''
