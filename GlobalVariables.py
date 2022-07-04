@@ -1,6 +1,6 @@
 domain_pretty_xml = ""
 net_pretty_xml = ""
-rootTree=""
+rootTree = ""
 domain_exemplar_dict = {}  # словарь элементов
 
 domain_address = ''
@@ -10,3 +10,4 @@ ethernet_address = ''
 server_name = ''
 
 Selected_Domain = ''
+Selected_deployment = 0

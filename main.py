@@ -3,9 +3,12 @@ import Data_processing_functions as DataFunc
 import GlobalVariables as GV
 import DominElements as DM
 
-WorkWithFile.get_data_from_file("testProject.omx")
-DataFunc.gen_domain_xml_str()
-DataFunc.select_domain()
+
+WorkWithFile.get_file_name()
+# WorkWithFile.get_data_from_file("testProject.omx")
+# DataFunc.gen_domain_xml_str()
+# DataFunc.select_domain()
+# DataFunc.select_deployment()
 #WorkWithFile.save_data_to_file("alpha.net.agent.xml", GlobalVariables.net_pretty_xml)
 #DataFunc.gen_domain_xml_str()
 #WorkWithFile.set_data_to_file("alpha.domain.agent.xml", GlobalVariables.domain_pretty_xml)

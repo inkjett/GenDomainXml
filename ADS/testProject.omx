@@ -17,32 +17,4 @@
     </dp:domain-node>
     <eth:ethernet-net name="Ethernet" uuid="ec063ca5-b7a9-4194-9163-f268758139f6" />
   </dp:domain>
-  <domain name="Domain1" address="local2" xmlns="automation.deployment" uuid="74718f66-9f07-4f14-ab72-993b3af214de">
-    <domain-node name="ARM" address="ARM2">
-      <ethernet-adapter name="EthernetAdapter" address="127.0.0.1" network="Ethernet" xmlns="automation.ethernet" />
-      <io-server name="Server" xmlns="server">
-        <opcda-server name="DaServer" />
-        <opcaeserver-module name="AeServer" />
-        <hda-server name="HdaServer" />
-        <opcua-module name="UaServer" />
-        <tcp-server name="TcpServer" />
-        <history-module name="HistoryModule" />
-      </io-server>
-    </domain-node>
-    <ethernet-net name="Ethernet" xmlns="automation.ethernet" />
-  </domain>
-  <domain name="Domain2" address="local2" xmlns="automation.deployment">
-    <domain-node name="ARM" address="ARM2">
-      <ethernet-adapter name="EthernetAdapter" address="127.0.0.1" network="Ethernet" xmlns="automation.ethernet" />
-      <io-server name="Server" xmlns="server">
-        <opcda-server name="DaServer" />
-        <opcaeserver-module name="AeServer" />
-        <hda-server name="HdaServer" />
-        <opcua-module name="UaServer" />
-        <tcp-server name="TcpServer" />
-        <history-module name="HistoryModule" />
-      </io-server>
-    </domain-node>
-    <ethernet-net name="Ethernet" xmlns="automation.ethernet" />
-  </domain>
 </omx>
