@@ -11,3 +11,5 @@ server_name = ''
 
 Selected_Domain = ''
 Selected_deployment = 0
+
+files_list = []  # массив списка фалов .omx

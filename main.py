@@ -1,10 +1,14 @@
 import WorkWithFile
 import Data_processing_functions as DataFunc
-import GlobalVariables as GV
+import GlobalVariables
 import DominElements as DM
 
 
 WorkWithFile.get_file_name()
+print(len(GlobalVariables.files_list))
+if len(GlobalVariables.files_list) > 1:
+    print('Необходимо выбрать файл для использования\n')
+
 # WorkWithFile.get_data_from_file("testProject.omx")
 # DataFunc.gen_domain_xml_str()
 # DataFunc.select_domain()
