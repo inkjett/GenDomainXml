@@ -90,6 +90,6 @@ def select_deployment():
             GV.Selected_deployment = int(temp)
             break
         else:
-            print('Необходимо ввести число от 1 до 2 количество попыток', 2 - i, ':')
+            print('Необходимо ввести число от 1 до 2, количество попыток', 2 - i, ':')
 
 
