@@ -3,41 +3,28 @@ import xml.etree.ElementTree as ET  # подключаем The ElementTree XML
 import GlobalVariables
 import os
 
-# чтение данных из файла
-def get_data_from_file_1(file_name):
-    with open(file_name, 'r', encoding="UTF-8") as f:  # Проходим по всем строкам файла проекта
-        while 8:  # бесконечный цикл
-            line = f.readline()  # записываем в переменную line каждую строку из файла
-            if not line:  # если строки кончились выходим из цикла
-                break
-            if " <dp:domain name=" in line:  # ищем начало домена
-                while "</dp:domain>" not in line:  # пока нет закрывающей конструкции </dp:domain> выполняем поиск элементов
-                    DP_funk.find_element(line)  # функция поиск элемента
-                    line = f.readline()  # с следующая линия в рамках dp:domain-node
-                print("all_done")
 
 # запись данных в файл
 def save_data_to_file(fileName, textSave):
     with open(fileName, "w") as filetowrite:
         filetowrite.write(textSave)
 
+
 # поиск файлов с разрешением omx
 def get_file_name():
     current_dir = os.getcwd()  # получаем каталог, где запускается скрипт
     files_in_dir = os.listdir(current_dir)
     files_list = []
-    file_number = 0
     for f in files_in_dir:
         if ".omx" in f:
-           files_list.append(f)
+            files_list.append(f)
     if len(files_list) > 1:  # выбор файла
-        print('Необходимо выбрать файл для использования\n')
-        [print(i) for i in files_list] # выводим список файлов
+        print('Необходимо выбрать файл для использования:')
+        [print(files_list.index(i) + 1, i) for i in files_list]
         for i in range(3):
             temp = input()
-            if temp.isdigit() and 1 <= int(temp) <= 2:
-                file_number = int(temp)
-                print(file_number)
+            if temp.isdigit() and 1 <= int(temp) <= len(files_list)+1:
+                print(files_list[int(temp)-1])
                 break
             else:
                 print('Необходимо ввести число от 1, количество попыток', 2 - i, ':')
