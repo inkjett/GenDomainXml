@@ -2,9 +2,12 @@ import WorkWithFile
 import Data_processing_functions as DataFunc
 import GlobalVariables
 import DominElements as DM
+file_name = WorkWithFile.get_file_name()
 
-
-WorkWithFile.get_file_name()  # ищем файлы
+if file_name != "":
+    WorkWithFile.get_data_from_file(file_name)
+    DataFunc.select_domain()
+# ищем файлы
 
 # WorkWithFile.get_data_from_file("testProject.omx")
 # DataFunc.gen_domain_xml_str()

@@ -24,11 +24,17 @@ def get_file_name():
         for i in range(3):
             temp = input()
             if temp.isdigit() and 1 <= int(temp) <= len(files_list)+1:
-                print(files_list[int(temp)-1])
+                print("Выбран файл", files_list[int(temp)-1])
+                return files_list[int(temp)-1]
                 break
             else:
                 print('Необходимо ввести число от 1, количество попыток', 2 - i, ':')
-
+    elif len(files_list) == 1:
+        print("Наеден файл:", files_list[0])
+        return files_list[0]
+    else:
+        print("Файлы не найдены")
+        return ""
 
 # чтение данных из файла
 def get_data_from_file(file_name):
